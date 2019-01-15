@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/modify_seq"
+        android:orderInCategory="100"
+        android:title="@string/modify_list_seq"
+        app:showAsAction="never" />
+</menu>

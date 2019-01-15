@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "liangzs.com.tomatotodo"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+greendao {
+    schemaVersion 2 // 数据库版本号
+    daoPackage 'liangzs.com.tomatotodo.data.greendao'//greenDao 自动生成的代码保存的包名
+    targetGenDir 'src/main/java' //自动生成的代码存储的路径，默认是 build/generated/source/greendao.
+    generateTests false //true的时候自动生成测试单元
+    //targetGenDirTests: 测试单元的生成目录默认是 src / androidTest / java
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'org.greenrobot:greendao:3.2.2'
+}
