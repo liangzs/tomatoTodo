@@ -14,7 +14,9 @@ public class HomePageContract {
     public interface View extends IBaseView {
         void updateList(List<Task> list);
 
-        void upateClock(String timeValue);
+        void upateClock(String timeValue, String type);
+
+        void nextTask();
 
     }
 
@@ -25,6 +27,12 @@ public class HomePageContract {
         void onDestroy();
 
         void startRecord();
+
+        void startRest();
+
+        void deleteTask(Task task);
+
+        void finishTask(Task task);
 
 
     }

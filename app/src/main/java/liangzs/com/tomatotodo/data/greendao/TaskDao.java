@@ -27,7 +27,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property Title = new Property(1, String.class, "title", false, "TITLE");
         public final static Property Content = new Property(2, String.class, "content", false, "CONTENT");
-        public final static Property IsPlaying = new Property(3, boolean.class, "isPlaying", false, "IS_PLAYING");
+        public final static Property CloclType = new Property(3, String.class, "cloclType", false, "CLOCL_TYPE");
     }
 
 
@@ -46,7 +46,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
                 "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
                 "\"TITLE\" TEXT," + // 1: title
                 "\"CONTENT\" TEXT," + // 2: content
-                "\"IS_PLAYING\" INTEGER NOT NULL );"); // 3: isPlaying
+                "\"CLOCL_TYPE\" TEXT);"); // 3: cloclType
     }
 
     /** Drops the underlying database table. */
@@ -73,7 +73,11 @@ public class TaskDao extends AbstractDao<Task, Long> {
         if (content != null) {
             stmt.bindString(3, content);
         }
-        stmt.bindLong(4, entity.getIsPlaying() ? 1L: 0L);
+ 
+        String cloclType = entity.getCloclType();
+        if (cloclType != null) {
+            stmt.bindString(4, cloclType);
+        }
     }
 
     @Override
@@ -94,7 +98,11 @@ public class TaskDao extends AbstractDao<Task, Long> {
         if (content != null) {
             stmt.bindString(3, content);
         }
-        stmt.bindLong(4, entity.getIsPlaying() ? 1L: 0L);
+ 
+        String cloclType = entity.getCloclType();
+        if (cloclType != null) {
+            stmt.bindString(4, cloclType);
+        }
     }
 
     @Override
@@ -108,7 +116,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // title
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // content
-            cursor.getShort(offset + 3) != 0 // isPlaying
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3) // cloclType
         );
         return entity;
     }
@@ -118,7 +126,7 @@ public class TaskDao extends AbstractDao<Task, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setContent(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setIsPlaying(cursor.getShort(offset + 3) != 0);
+        entity.setCloclType(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
      }
     
     @Override

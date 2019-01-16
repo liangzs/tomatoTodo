@@ -34,10 +34,6 @@ public class TestActivity extends AppCompatActivity {
         data.add(new Task("4", "content4"));
 
         TaskAdapter taskAdapter = new TaskAdapter(data, new TaskAdapter.ItemListener() {
-            @Override
-            public void itemOnclick(Task task) {
-
-            }
 
             @Override
             public void playOnclick(Task task, int position) {

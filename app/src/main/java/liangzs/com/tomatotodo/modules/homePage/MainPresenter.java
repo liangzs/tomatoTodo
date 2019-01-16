@@ -11,6 +11,7 @@ import java.util.TimerTask;
 import liangzs.com.tomatotodo.base.BasePresenter;
 import liangzs.com.tomatotodo.common.GlobalApplication;
 import liangzs.com.tomatotodo.data.entity.Task;
+import liangzs.com.tomatotodo.data.entity.TaskHistory;
 
 /**
  * @author liangzs
@@ -18,7 +19,7 @@ import liangzs.com.tomatotodo.data.entity.Task;
  */
 public class MainPresenter extends BasePresenter<HomePageContract.View> implements HomePageContract.Presenter {
     private Timer timer;
-    private int remainCount = 1800;//60min
+    private int remainCount;//60min
     private int min, second;
     private String clockResult;
 
@@ -31,11 +32,16 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
 
     @Override
     public void onDestroy() {
-
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
     }
 
     @Override
     public void startRecord() {
+//        remainCount = 1800;
+        remainCount = 5;
         if (timer == null) {
             timer = new Timer();
         }
@@ -49,9 +55,55 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
                 if (second < 10) {
                     clockResult = min + ":0" + second;
                 }
-                view.upateClock(clockResult);
+                view.upateClock(clockResult, WORK);
+                if (remainCount <= 0) {
+                    taskComplet();
+                    this.cancel();
+                }
             }
         }, 0, 1000);
+    }
+
+    @Override
+    public void startRest() {
+        remainCount = 3;
+//        remainCount = 300;
+        if (timer == null) {
+            timer = new Timer();
+        }
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                remainCount--;
+                min = remainCount / 60;
+                second = remainCount % 60;
+                clockResult = min + ":" + second;
+                if (second < 10) {
+                    clockResult = min + ":0" + second;
+                }
+                view.upateClock(clockResult, REST);
+                if (remainCount <= 0) {
+                    taskComplet();
+                    cancel();
+                }
+            }
+        }, 0, 1000);
+    }
+
+    @Override
+    public void deleteTask(Task task) {
+        GlobalApplication.getInstance().getSession().getTaskDao().delete(task);
+    }
+
+    public void taskComplet() {
+        view.upateClock("00:00", NONE);
+        view.nextTask();
+    }
+
+    @Override
+    public void finishTask(Task task) {
+        TaskHistory taskHistory = new TaskHistory(task);
+        GlobalApplication.getInstance().getSession().getTaskHistoryDao().insert(taskHistory);
     }
 
     public static final String WORK = "WORK";

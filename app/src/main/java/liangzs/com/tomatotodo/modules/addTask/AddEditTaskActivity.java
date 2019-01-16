@@ -66,6 +66,9 @@ public class AddEditTaskActivity extends BaseActivity<AddEditTaskContract.Presen
                     Snackbar.make(view, "title can't be null", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
+                if (ObjectUtil.isEmpty(task)) {
+                    task = new Task();
+                }
                 task.setTitle(mTitle.getText().toString());
                 task.setContent(mContent.getText().toString());
                 if (isEdit) {

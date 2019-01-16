@@ -6,6 +6,10 @@ import org.greenrobot.greendao.annotation.Generated;
 
 import java.io.Serializable;
 
+import liangzs.com.tomatotodo.modules.homePage.MainPresenter;
+
+import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.NONE;
+
 /**
  * @author liangzs
  * @Date 2019/1/14
@@ -17,14 +21,13 @@ public class Task implements Serializable {
     private Long id;
     private String title;
     private String content;
-    private boolean isPlaying;
+    @MainPresenter.ClockType
+    private String cloclType = NONE;
 
-    @Generated(hash = 1814269412)
-    public Task(Long id, String title, String content, boolean isPlaying) {
+    public Task(Long id, String title, String content) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.isPlaying = isPlaying;
     }
 
     public Task(String title, String content) {
@@ -32,8 +35,15 @@ public class Task implements Serializable {
         this.content = content;
     }
 
-    @Generated(hash = 733837707)
     public Task() {
+    }
+
+    @Generated(hash = 118288489)
+    public Task(Long id, String title, String content, String cloclType) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.cloclType = cloclType;
     }
 
     public Long getId() {
@@ -57,23 +67,16 @@ public class Task implements Serializable {
         this.title = title;
     }
 
-    public boolean isPlaying() {
-        return isPlaying;
-    }
-
-    public void setPlaying(boolean playing) {
-        isPlaying = playing;
-    }
-
-    public boolean getIsPlaying() {
-        return this.isPlaying;
-    }
-
-    public void setIsPlaying(boolean isPlaying) {
-        this.isPlaying = isPlaying;
-    }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCloclType() {
+        return cloclType;
+    }
+
+    public void setCloclType(String cloclType) {
+        this.cloclType = cloclType;
     }
 }
