@@ -40,8 +40,8 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
 
     @Override
     public void startRecord() {
-//        remainCount = 1800;
-        remainCount = 5;
+        remainCount = 1800;
+//        remainCount = 5;
         if (timer == null) {
             timer = new Timer();
         }
@@ -57,7 +57,8 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
                 }
                 view.upateClock(clockResult, WORK);
                 if (remainCount <= 0) {
-                    taskComplet();
+                    view.upateClock("00:00", FINISH);
+                    view.finishTask();
                     this.cancel();
                 }
             }
@@ -66,8 +67,8 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
 
     @Override
     public void startRest() {
-        remainCount = 3;
-//        remainCount = 300;
+//        remainCount = 6;
+        remainCount = 300;
         if (timer == null) {
             timer = new Timer();
         }
@@ -83,7 +84,8 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
                 }
                 view.upateClock(clockResult, REST);
                 if (remainCount <= 0) {
-                    taskComplet();
+                    view.upateClock("00:00", REST);
+                    view.nextTask();
                     cancel();
                 }
             }
@@ -95,23 +97,21 @@ public class MainPresenter extends BasePresenter<HomePageContract.View> implemen
         GlobalApplication.getInstance().getSession().getTaskDao().delete(task);
     }
 
-    public void taskComplet() {
-        view.upateClock("00:00", NONE);
-        view.nextTask();
-    }
 
     @Override
     public void finishTask(Task task) {
         TaskHistory taskHistory = new TaskHistory(task);
         GlobalApplication.getInstance().getSession().getTaskHistoryDao().insert(taskHistory);
+        GlobalApplication.getInstance().getSession().getTaskDao().delete(task);
     }
 
     public static final String WORK = "WORK";
     public static final String REST = "REST";
     public static final String NONE = "NONE";
+    public static final String FINISH = "FINISH";
 
     @StringDef({
-            WORK, REST, NONE
+            WORK, REST, NONE, FINISH
     })
     @Retention(RetentionPolicy.SOURCE)
     public @interface ClockType {

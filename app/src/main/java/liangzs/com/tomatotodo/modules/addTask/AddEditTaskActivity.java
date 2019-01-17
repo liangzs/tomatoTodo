@@ -11,7 +11,6 @@ import android.widget.EditText;
 
 import liangzs.com.tomatotodo.R;
 import liangzs.com.tomatotodo.base.BaseActivity;
-import liangzs.com.tomatotodo.common.GlobalApplication;
 import liangzs.com.tomatotodo.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
 
@@ -71,11 +70,8 @@ public class AddEditTaskActivity extends BaseActivity<AddEditTaskContract.Presen
                 }
                 task.setTitle(mTitle.getText().toString());
                 task.setContent(mContent.getText().toString());
-                if (isEdit) {
-                    ((GlobalApplication) getApplication()).getSession().getTaskDao().update(task);
-                } else {
-                    ((GlobalApplication) getApplication()).getSession().getTaskDao().insert(task);
-                }
+                presenter.submitTask(isEdit,task);
+
                 Log.i("AddTask", "id:" + task.getId());
                 finish();
             }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 public abstract class BaseActivity<P extends IBasePresenter<V>, V extends IBaseView> extends AppCompatActivity implements IBaseView {
     public P presenter;
@@ -61,5 +62,11 @@ public abstract class BaseActivity<P extends IBasePresenter<V>, V extends IBaseV
     @Override
     public void hideLoading() {
 
+    }
+
+    public void showShort(CharSequence message) {
+        Toast mToast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
+        mToast.setText(message);
+        mToast.show();
     }
 }

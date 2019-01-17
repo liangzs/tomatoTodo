@@ -16,6 +16,7 @@ public class HomePageContract {
 
         void upateClock(String timeValue, String type);
 
+        void finishTask();
         void nextTask();
 
     }

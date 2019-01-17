@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,9 @@ import liangzs.com.tomatotodo.base.BaseActivity;
 import liangzs.com.tomatotodo.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
 import liangzs.com.tomatotodo.modules.addTask.AddEditTaskActivity;
+import liangzs.com.tomatotodo.modules.historyTask.HistoryActivity;
 
+import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.FINISH;
 import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.NONE;
 import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.REST;
 import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.WORK;
@@ -50,6 +53,7 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
     private FloatingActionButton fab;
     private List<Task> tasks;
     private Task currentTask;
+    private Drawable drawable;
 
 
     @Override
@@ -161,7 +165,24 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
                         dialog.setButton(-1, "确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                starTask();
+                            }
+                        });
+                        break;
+                    case FINISH:
+                        dialog.setTitle("提交当前任务");
+                        dialog.setMessage("任务已完成，进行下一个任务");
+                        dialog.setButton(-1, "确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                presenter.finishTask(currentTask);
+                                tasks.remove(currentTask);
+                                taskAdapter.notifyDataSetChanged();
+                                if (ObjectUtil.isEmpty(tasks)) {
+                                    showShort(getString(R.string.toast_no_task));
+                                    return;
+                                }
+                                presenter.startRest();
                             }
                         });
                         break;
@@ -171,7 +192,11 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
                         dialog.setButton(-1, "确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
+                                if (ObjectUtil.isEmpty(tasks)) {
+                                    showShort(getString(R.string.toast_no_task));
+                                    return;
+                                }
+                                starTask();
                             }
                         });
                         break;
@@ -179,6 +204,18 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
                 dialog.show();
             }
         });
+    }
+
+    /**
+     * 开日任务
+     */
+    private void starTask() {
+        tasks.get(0).setCloclType(WORK);
+        currentTask = tasks.get(0);
+        clockType = WORK;
+        taskAdapter.notifyDataSetChanged();
+        presenter.startRecord();
+
     }
 
 
@@ -260,11 +297,13 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.nav_camera) {
+        if (id == R.id.home_page) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.history) {
+            Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
+            startActivity(intent);
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.setting) {
 
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -296,14 +335,17 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
                 btTime.setText(timeValue);
                 if (WORK.equals(clockTyp)) {
                     btTime.setTextColor(Color.RED);
+                    drawable = getDrawable(R.mipmap.ic_clear_search_api_holo_light);
                 } else if (REST.equals(clockTyp)) {
                     btTime.setTextColor(Color.BLUE);
+                    drawable = getDrawable(R.mipmap.ic_clear_search_api_holo_light);
                 } else {
                     btTime.setTextColor(Color.BLACK);
-                    Drawable dra = getDrawable(R.mipmap.ic_checkmark_light);
-                    dra.setBounds(0, 0, dra.getMinimumWidth(), dra.getMinimumHeight());
-                    btTime.setCompoundDrawables(null, null, dra, null);
+                    drawable = getDrawable(R.mipmap.ic_checkmark_light);
+
                 }
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                btTime.setCompoundDrawables(null, null, drawable, null);
             }
         });
     }
@@ -313,8 +355,23 @@ public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomeP
      */
     @Override
     public void nextTask() {
-//        taskAdapter
-        presenter.finishTask(currentTask);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                starTask();
+            }
+        });
+    }
+
+    @Override
+    public void finishTask() {
+        currentTask.setCloclType(REST);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                taskAdapter.changePlayStatus(currentTask);
+            }
+        });
     }
 
     @Override

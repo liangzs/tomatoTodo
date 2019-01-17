@@ -1,20 +1,22 @@
-package liangzs.com.tomatotodo.modules.addTask;
+package liangzs.com.tomatotodo.modules.historyTask;
+
+import java.util.List;
 
 import liangzs.com.tomatotodo.base.IBasePresenter;
 import liangzs.com.tomatotodo.base.IBaseView;
 import liangzs.com.tomatotodo.data.entity.Task;
+import liangzs.com.tomatotodo.data.entity.TaskHistory;
 
 /**
  * @author liangzs
  * @Date 2019/1/14
  */
-public class AddEditTaskContract {
+public class HistoryTaskContract {
     public interface View extends IBaseView {
-        void insertCallBack();
 
     }
 
     public interface Presenter extends IBasePresenter<View> {
-        void submitTask(boolean isEdit, Task task);
+        List<TaskHistory> queryHistory();
     }
 }

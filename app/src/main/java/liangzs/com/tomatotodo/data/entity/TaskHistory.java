@@ -22,7 +22,7 @@ public class TaskHistory {
 
     public TaskHistory(Task task) {
         this.title = task.getTitle();
-        this.content = getContent();
+        this.content = task.getContent();
         this.date = new Date();
     }
 

@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".modules.homePage.MainActivity"
             android:label="@string/app_name"
@@ -23,8 +23,9 @@
         <activity
             android:name=".modules.addTask.AddEditTaskActivity"
             android:label="@string/title_activity_add_task"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".modules.addTask.TestActivity"></activity>
+            />
+        <activity android:name=".modules.addTask.TestActivity" />
+        <activity android:name=".modules.historyTask.HistoryActivity"></activity>
     </application>
 
 </manifest>
