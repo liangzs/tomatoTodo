@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".modules.homePage.MainActivity"
+            android:name=".presentation.homePage.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".modules.addTask.AddEditTaskActivity"
+            android:name=".presentation.addTask.AddEditTaskActivity"
             android:label="@string/title_activity_add_task"
             />
-        <activity android:name=".modules.addTask.TestActivity" />
-        <activity android:name=".modules.historyTask.HistoryActivity"></activity>
+        <activity android:name=".presentation.addTask.TestActivity" />
+        <activity android:name=".presentation.historyTask.HistoryActivity"></activity>
     </application>
 
 </manifest>

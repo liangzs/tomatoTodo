@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.addTask;
+package liangzs.com.tomatotodo.presentation.addTask;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import liangzs.com.tomatotodo.R;
 import liangzs.com.tomatotodo.data.entity.Task;
-import liangzs.com.tomatotodo.modules.homePage.DragListView;
-import liangzs.com.tomatotodo.modules.homePage.TaskAdapter;
+import liangzs.com.tomatotodo.presentation.homePage.DragListView;
+import liangzs.com.tomatotodo.presentation.homePage.TaskAdapter;
 
 public class TestActivity extends AppCompatActivity {
     private DragListView listView;

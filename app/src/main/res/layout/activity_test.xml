@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".modules.addTask.TestActivity">
+    tools:context=".presentation.addTask.TestActivity">
 
-    <liangzs.com.tomatotodo.modules.homePage.DragListView
+    <liangzs.com.tomatotodo.presentation.homePage.DragListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></liangzs.com.tomatotodo.modules.homePage.DragListView>
+        android:layout_height="match_parent"></liangzs.com.tomatotodo.presentation.homePage.DragListView>
 
 </android.support.constraint.ConstraintLayout>

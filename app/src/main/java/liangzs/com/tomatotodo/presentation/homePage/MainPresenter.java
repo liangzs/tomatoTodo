@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.homePage;
+package liangzs.com.tomatotodo.presentation.homePage;
 
 import android.support.annotation.StringDef;
 
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import liangzs.com.tomatotodo.base.BasePresenter;
+import liangzs.com.tomatotodo.common.base.BasePresenter;
 import liangzs.com.tomatotodo.common.GlobalApplication;
 import liangzs.com.tomatotodo.data.entity.Task;
 import liangzs.com.tomatotodo.data.entity.TaskHistory;

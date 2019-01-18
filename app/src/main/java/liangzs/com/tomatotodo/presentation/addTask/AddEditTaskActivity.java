@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.addTask;
+package liangzs.com.tomatotodo.presentation.addTask;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import liangzs.com.tomatotodo.R;
-import liangzs.com.tomatotodo.base.BaseActivity;
+import liangzs.com.tomatotodo.common.base.BaseActivity;
 import liangzs.com.tomatotodo.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
 

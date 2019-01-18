@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.historyTask;
+package liangzs.com.tomatotodo.presentation.historyTask;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import liangzs.com.tomatotodo.R;
-import liangzs.com.tomatotodo.base.BaseActivity;
+import liangzs.com.tomatotodo.common.base.BaseActivity;
 import liangzs.com.tomatotodo.data.entity.TaskHistory;
 
 import static android.support.v4.util.Preconditions.checkNotNull;
