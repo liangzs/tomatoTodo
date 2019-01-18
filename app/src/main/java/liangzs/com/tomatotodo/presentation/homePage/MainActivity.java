@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.homePage;
+package liangzs.com.tomatotodo.presentation.homePage;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,16 +26,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import liangzs.com.tomatotodo.R;
-import liangzs.com.tomatotodo.base.BaseActivity;
-import liangzs.com.tomatotodo.domain.common.util.ObjectUtil;
+import liangzs.com.tomatotodo.common.base.BaseActivity;
+import liangzs.com.tomatotodo.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
-import liangzs.com.tomatotodo.modules.addTask.AddEditTaskActivity;
-import liangzs.com.tomatotodo.modules.historyTask.HistoryActivity;
+import liangzs.com.tomatotodo.presentation.addTask.AddEditTaskActivity;
+import liangzs.com.tomatotodo.presentation.historyTask.HistoryActivity;
 
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.FINISH;
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.NONE;
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.REST;
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.WORK;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.FINISH;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.NONE;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.REST;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.WORK;
 
 public class MainActivity extends BaseActivity<HomePageContract.Presenter, HomePageContract.View>
         implements NavigationView.OnNavigationItemSelectedListener, HomePageContract.View {

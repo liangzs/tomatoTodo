@@ -1,7 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+apply from: this.file('dependencies.gradle')
 buildscript {
-    
+
     repositories {
         google()
         jcenter()
@@ -25,4 +25,27 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+
+ext {
+    //Android
+    androidBuildToolsVersion = "28.0.1"
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    //dependence
+    daggerVersion = '2.8'
+    butterKnifeVersion = '7.0.1'
+    recyclerViewVersion = '21.0.3'
+    rxJavaVersion = '2.0.2'
+    rxAndroidVersion = '2.0.1'
+    javaxAnnotationVersion = '1.0'
+    javaxInjectVersion = '1'
+    gsonVersion = '2.3'
+    okHttpVersion = '2.5.0'
+    androidAnnotationsVersion = '21.0.3'
+    arrowVersion = '1.0.0'
+
 }

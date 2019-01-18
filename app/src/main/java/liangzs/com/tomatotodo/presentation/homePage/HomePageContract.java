@@ -1,9 +1,9 @@
-package liangzs.com.tomatotodo.modules.homePage;
+package liangzs.com.tomatotodo.presentation.homePage;
 
 import java.util.List;
 
-import liangzs.com.tomatotodo.base.IBasePresenter;
-import liangzs.com.tomatotodo.base.IBaseView;
+import liangzs.com.tomatotodo.common.base.IBasePresenter;
+import liangzs.com.tomatotodo.common.base.IBaseView;
 import liangzs.com.tomatotodo.data.entity.Task;
 
 /**

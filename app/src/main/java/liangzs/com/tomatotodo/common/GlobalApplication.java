@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.domain.common;
+package liangzs.com.tomatotodo.common;
 
 import android.app.Application;
 

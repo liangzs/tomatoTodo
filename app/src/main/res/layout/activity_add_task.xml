@@ -7,7 +7,7 @@
     android:background="?attr/colorPrimaryDark"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".modules.addTask.AddEditTaskActivity">
+    tools:context=".presentation.addTask.AddEditTaskActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

@@ -6,9 +6,9 @@ import org.greenrobot.greendao.annotation.Generated;
 
 import java.io.Serializable;
 
-import liangzs.com.tomatotodo.modules.homePage.MainPresenter;
+import liangzs.com.tomatotodo.presentation.homePage.MainPresenter;
 
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.NONE;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.NONE;
 
 /**
  * @author liangzs

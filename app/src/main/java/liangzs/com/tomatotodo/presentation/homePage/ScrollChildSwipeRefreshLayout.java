@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package liangzs.com.tomatotodo.modules.homePage;
+package liangzs.com.tomatotodo.presentation.homePage;
 
 import android.content.Context;
 import android.support.v4.view.ViewCompat;

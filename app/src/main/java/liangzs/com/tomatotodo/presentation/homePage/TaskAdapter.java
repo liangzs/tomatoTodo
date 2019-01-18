@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.modules.homePage;
+package liangzs.com.tomatotodo.presentation.homePage;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +12,9 @@ import java.util.List;
 import liangzs.com.tomatotodo.R;
 import liangzs.com.tomatotodo.data.entity.Task;
 
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.NONE;
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.REST;
-import static liangzs.com.tomatotodo.modules.homePage.MainPresenter.WORK;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.NONE;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.REST;
+import static liangzs.com.tomatotodo.presentation.homePage.MainPresenter.WORK;
 
 /**
  * @author liangzs

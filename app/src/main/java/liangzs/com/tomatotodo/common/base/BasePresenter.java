@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.base;
+package liangzs.com.tomatotodo.common.base;
 
 /**
  * @author liangzs

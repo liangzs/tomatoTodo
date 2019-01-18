@@ -1,4 +1,4 @@
-package liangzs.com.tomatotodo.domain.common.util;
+package liangzs.com.tomatotodo.common.util;
 
 import android.os.Build;
 import android.support.v4.util.SimpleArrayMap;
