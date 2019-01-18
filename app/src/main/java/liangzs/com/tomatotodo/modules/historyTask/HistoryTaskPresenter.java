@@ -3,8 +3,7 @@ package liangzs.com.tomatotodo.modules.historyTask;
 import java.util.List;
 
 import liangzs.com.tomatotodo.base.BasePresenter;
-import liangzs.com.tomatotodo.common.GlobalApplication;
-import liangzs.com.tomatotodo.data.entity.Task;
+import liangzs.com.tomatotodo.domain.common.GlobalApplication;
 import liangzs.com.tomatotodo.data.entity.TaskHistory;
 
 /**

@@ -21,14 +21,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import liangzs.com.tomatotodo.R;
 import liangzs.com.tomatotodo.base.BaseActivity;
-import liangzs.com.tomatotodo.common.util.ObjectUtil;
+import liangzs.com.tomatotodo.domain.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
 import liangzs.com.tomatotodo.modules.addTask.AddEditTaskActivity;
 import liangzs.com.tomatotodo.modules.historyTask.HistoryActivity;

@@ -11,7 +11,7 @@ import android.widget.EditText;
 
 import liangzs.com.tomatotodo.R;
 import liangzs.com.tomatotodo.base.BaseActivity;
-import liangzs.com.tomatotodo.common.util.ObjectUtil;
+import liangzs.com.tomatotodo.domain.common.util.ObjectUtil;
 import liangzs.com.tomatotodo.data.entity.Task;
 
 public class AddEditTaskActivity extends BaseActivity<AddEditTaskContract.Presenter, AddEditTaskContract.View> implements AddEditTaskContract.View {

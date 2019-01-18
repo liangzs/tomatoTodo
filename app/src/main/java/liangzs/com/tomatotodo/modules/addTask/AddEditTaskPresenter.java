@@ -1,7 +1,7 @@
 package liangzs.com.tomatotodo.modules.addTask;
 
 import liangzs.com.tomatotodo.base.BasePresenter;
-import liangzs.com.tomatotodo.common.GlobalApplication;
+import liangzs.com.tomatotodo.domain.common.GlobalApplication;
 import liangzs.com.tomatotodo.data.entity.Task;
 
 /**
